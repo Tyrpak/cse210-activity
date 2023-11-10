@@ -5,6 +5,11 @@ public class Journal
     public List<Entry> _entries = new List<Entry>();
     private string file = "MyJournal.txt";
 
+    public void AddEntry(Entry newEntry)
+    {
+        _entries.Add(newEntry);
+    }
+
     public void DisplayAll()
     {
         foreach (Entry entry in _entries)
@@ -40,7 +45,7 @@ public class Journal
                 entry._promptText = entries[1];
                 entry._entryText = entries[2];
 
-                _entries.Add(entry);
+                AddEntry(entry);
             }
     }
 

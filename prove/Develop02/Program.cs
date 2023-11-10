@@ -32,7 +32,7 @@ class Program
                     string userEntry = Console.ReadLine();
                     entry._entryText = userEntry;
 
-                    journal._entries.Add(entry);
+                    journal.AddEntry(entry);
 
                     break;
                 case 2:
