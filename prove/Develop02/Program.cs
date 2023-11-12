@@ -22,7 +22,7 @@ class Program
                     // Write an entry
                     string dateInfo = GetDateTime();
                     string prompt = randomPrompt.GetRandomPrompt();
-                    string entryNumber = GetEntryNumber();
+                    var entryNumber = journal.GetEntryNumber();
 
                     Entry entry = new Entry();
                     entry._date = dateInfo;
@@ -40,6 +40,7 @@ class Program
                 case 2:
                     // Display journal entries
                     journal.DisplayAll();
+
                     break;
                 case 3:
                     // Load file
@@ -96,25 +97,4 @@ What would you like to do? ";
         string dateText = theCurrentTime.ToShortDateString();
         return dateText;
     }
-
-    static string GetEntryNumber()
-    // function was for exceeding the core, but the foreach is not working
-    {
-        string currentTime = GetDateTime();
-        int todaysNumberOfEntries = 0;
-        
-        List<Entry> _journalEntries = new List<Entry>();
-        
-        foreach (Entry entry in _journalEntries)
-        {
-            if (entry._date == currentTime){
-                
-                todaysNumberOfEntries++;
-                };
-        }
-        
-        string entryStrNumber = todaysNumberOfEntries.ToString();
-        
-        return entryStrNumber;
-    }    
 }

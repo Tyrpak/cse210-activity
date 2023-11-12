@@ -18,6 +18,32 @@ public class Journal
         }
     }
 
+    static string GetDateTime()
+    {
+        DateTime theCurrentTime = DateTime.Now;
+        string dateText = theCurrentTime.ToShortDateString();
+        return dateText;
+    }
+
+    public string GetEntryNumber()
+    // function was for exceeding the core, but the foreach is not working
+    {
+        string currentTime = GetDateTime();
+        int todaysNumberOfEntries = 1;
+        
+        foreach (Entry entry in _entries)
+        {
+            if (entry._date == currentTime){
+                
+            todaysNumberOfEntries++;
+            };
+        }
+        
+        string entryStrNumber = todaysNumberOfEntries.ToString();
+        
+        return entryStrNumber;
+    }    
+
     public void SaveToFile()
 
     {

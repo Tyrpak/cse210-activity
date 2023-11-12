@@ -1,3 +1,2 @@
-2023. 11. 12.; ; What frightened you today?; FOMO
-2023. 11. 12.; ; How did you procrastinate on important tasks today?; By playing video games
-2023. 11. 12.; ; How did I see the hand of the Lord in my life today?; By seeing and feeling his grace
+2023. 11. 12.; 1; Did you watch a TV show today? If so what?; No
+2023. 11. 12.; 2; If I had one thing I could do over today, what would it be?; Telling Michelle that I went to sleep
