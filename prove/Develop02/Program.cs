@@ -98,23 +98,22 @@ What would you like to do? ";
     }
 
     static string GetEntryNumber()
+    // function was for exceeding the core, but the foreach is not working
     {
         string currentTime = GetDateTime();
         int todaysNumberOfEntries = 0;
-        string entryStrNumber = "";
         
         List<Entry> _journalEntries = new List<Entry>();
         
         foreach (Entry entry in _journalEntries)
         {
-            //entryStrNumber = "valami";
             if (entry._date == currentTime){
                 
                 todaysNumberOfEntries++;
                 };
         }
         
-        entryStrNumber = todaysNumberOfEntries.ToString();
+        string entryStrNumber = todaysNumberOfEntries.ToString();
         
         return entryStrNumber;
     }    
