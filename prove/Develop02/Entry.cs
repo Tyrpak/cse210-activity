@@ -13,7 +13,7 @@ public class Entry
     
     public void Display()
     {
-        Console.WriteLine($"\nEntry Nr: #{_entryNumber} of Date: {_date}");
+        Console.WriteLine($"\nJournal Entry Nr. #{_entryNumber} on {_date}");
         Console.WriteLine($"Prompt: {_promptText}");
         Console.WriteLine($"Entry: {_entryText}");
     }
