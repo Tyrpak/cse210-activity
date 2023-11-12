@@ -1,16 +1,16 @@
 using System;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
 
     static void Main(string[] args)
     {
-        int[] validNumbers = { 1, 2, 3, 4, 5 };
         int action = 0;
         
         Journal journal = new Journal();
-        PromptGenerator pg = new PromptGenerator();
+        PromptGenerator randomPrompt = new PromptGenerator();
 
         while (action != 5)
         {
@@ -19,12 +19,14 @@ class Program
             switch (action)
             {
                 case 1:
-                    // Write Journal Entry
+                    // Write an entry
                     string dateInfo = GetDateTime();
-                    string prompt = pg.GetRandomPrompt();
+                    string prompt = randomPrompt.GetRandomPrompt();
+                    string entryNumber = GetEntryNumber();
 
                     Entry entry = new Entry();
                     entry._date = dateInfo;
+                    entry._entryNumber = entryNumber;
                     entry._promptText = prompt;
 
                     Console.Write($"{prompt}\n");
@@ -36,7 +38,7 @@ class Program
 
                     break;
                 case 2:
-                    // Display Journal Entries
+                    // Display journal entries
                     journal.DisplayAll();
                     break;
                 case 3:
@@ -44,7 +46,7 @@ class Program
                     journal.LoadFromFile();
                     break;
                 case 4:
-                    // Save
+                    // Save file
                     journal.SaveToFile();
                     break;
                 case 5:
@@ -59,7 +61,6 @@ class Program
     }
 
     static int Choices()
-    // Method to display choices to user
     {
         string choices = @"
 Please select one of the following choices:
@@ -91,8 +92,30 @@ What would you like to do? ";
 
     static string GetDateTime()
     {
-        DateTime now = DateTime.Now;
-        string currentDateTime = now.ToString("F");
-        return currentDateTime;
+        DateTime theCurrentTime = DateTime.Now;
+        string dateText = theCurrentTime.ToShortDateString();
+        return dateText;
     }
+
+    static string GetEntryNumber()
+    {
+        string currentTime = GetDateTime();
+        int todaysNumberOfEntries = 0;
+        string entryStrNumber = "";
+        
+        List<Entry> _journalEntries = new List<Entry>();
+        
+        foreach (Entry entry in _journalEntries)
+        {
+            //entryStrNumber = "valami";
+            if (entry._date == currentTime){
+                
+                todaysNumberOfEntries++;
+                };
+        }
+        
+        entryStrNumber = todaysNumberOfEntries.ToString();
+        
+        return entryStrNumber;
+    }    
 }

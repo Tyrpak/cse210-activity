@@ -16,7 +16,6 @@ public class Journal
         {
             entry.Display();
         }
-        Console.WriteLine("\n");
     }
 
     public void SaveToFile()
@@ -26,7 +25,7 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date}; {entry._promptText};: {entry._entryText}| ");
+                outputFile.WriteLine($"{entry._date}; {entry._entryNumber}; {entry._promptText}; {entry._entryText}");
             }
         }
     }
@@ -37,16 +36,16 @@ public class Journal
         List<string> readText = File.ReadAllLines(file).Where(arg => !string.IsNullOrWhiteSpace(arg)).ToList();
         foreach (string line in readText)
             {
-                string[] entries = line.Split("| ");
+                string[] entries = line.Split("; ");
 
                 Entry entry = new Entry();
 
                 entry._date = entries[0];
-                entry._promptText = entries[1];
-                entry._entryText = entries[2];
+                entry._entryNumber = entries[1];
+                entry._promptText = entries[2];
+                entry._entryText = entries[3];
 
                 AddEntry(entry);
             }
     }
-
 }
