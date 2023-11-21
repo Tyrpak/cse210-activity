@@ -4,7 +4,11 @@ public class Word
 {
     public string _text = "";
     public bool _isHidden = False;
-      
+    
+    public Word(string _text, bool _isHidden)
+    {
+
+    }
     
     public void Show(string word, bool hidden)
     {
@@ -19,6 +23,8 @@ public class Word
             word1 = underscore;
 
         }
+
+        return word1
 
     }
 

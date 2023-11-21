@@ -15,13 +15,8 @@ public class Scripture
     {
        for (var i = 0; i < _words.Length; i++)
         { 
-            Word word = new Word;
             _hidden.Add(_words[i], False);
-
-
-
         }
-
     }
 
     public void GetWords()

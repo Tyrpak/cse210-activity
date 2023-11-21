@@ -5,8 +5,10 @@ class Program
     static void Main(string[] args)
     {
         Console.Clear();
-        Reference.ReferenceDisplay();
-        Console.WriteLine($"\n{Reference._reference}: {Scripture._scriptureText}");
+        string reference = Reference.ReferenceDisplay();
+        Scripture.SetHidden();
+
+        Console.WriteLine($"\n{reference}: {Scripture._scriptureText}");
         
         Console.Write("\nPress enter to continue or type 'quit' to finish");
         
