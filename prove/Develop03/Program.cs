@@ -6,6 +6,7 @@ class Program
     {
         Console.Clear();
         Reference.ReferenceDisplay();
+        Console.WriteLine($"\n{Reference._reference}: {Scripture._scriptureText}");
         
         Console.Write("\nPress enter to continue or type 'quit' to finish");
         
@@ -22,7 +23,7 @@ class Program
         }
         else 
         {
-            Word.GetNewHiddenWord();
+            Scripture.GetRenderedText();
         }
     }
 
