@@ -6,7 +6,7 @@ class Program
     {
         Console.Clear();
         string reference = Reference.ReferenceDisplay();
-        Scripture.SetHidden();
+        List hidden = Scripture.SetHidden();
 
         Console.WriteLine($"\n{reference}: {Scripture._scriptureText}");
         
