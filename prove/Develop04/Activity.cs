@@ -3,54 +3,62 @@ using System;
 public class Activity
 {
     // Attributes
-    private string _activityName;
-    private int _activityTime;
+    public string _name;
+    public string _description;
+    public int _duration;
+
     private string _message = "You may begin in...";
 
     // Constructors
-    public Activity(string activityName, int activityTime)
+    public Activity(string name, string description, int duration)
     {
-        _activityName = activityName;
-        _activityTime = activityTime;
+        _name = name;
+        _description = description;
+        _duration = duration;
     }
-    public void GetActivityName()
+
+    public void DisplayStartingMessage()
     {
-        Console.WriteLine($"Welcome to the {_activityName} Activity\n");
+        Console.WriteLine($"Welcome to the {_name} Activity\n");
+        Console.WriteLine($"{_description}\n");
     }
-    public void SetActivityName(string activityName)
+
+    public void DisplayEndingMessage()
     {
-        _activityName = activityName;
+        Console.WriteLine($"Well done!\n");
+        ShowSpinner();
     }
+
+
     public int GetActivityTime()
     {
         Console.Write("\nHow long, in seconds, would you like for your session? ");
         int userSeconds = Int32.Parse(Console.ReadLine());
-        _activityTime = userSeconds;
-        return userSeconds;
+        _duration = userSeconds;
+        return _duration;
     }
-    public void SetActivityTime(int activityTime)
+        
+    public void ShowSpinner()
     {
-        _activityTime = activityTime;
+        var counter = 0;
+        for (int i = 0; i < 50; i++)
+        {
+            switch (counter % 4)
+            {
+                case 0: Console.Write("/"); break;
+                case 1: Console.Write("-"); break;
+                case 2: Console.Write("\\"); break;
+                case 3: Console.Write("|"); break;
+            }
+            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+            counter++;
+            Thread.Sleep(100);
+        }
     }
 
-    // Methods
-    public void GetReady()
+    public void ShowCountDown(int time)
     {
-        Console.Clear();
-        Spinner spinner = new Spinner();
-        spinner.ShowSpinnerReady();
-    }
-
-    public void GetDone()
-    {
-        Spinner spinner = new Spinner();
-        spinner.ShowSpinnerDone();
-        Console.WriteLine($"\nYou have completed another {_activityTime} seconds of the {_activityName} Activity!");
-        spinner.ShowSpinner();
-    }
-     public void CountDown(int time)
-    {
-        Console.WriteLine();  //insert blank line to start
+        Console.WriteLine();  
         for (int i = time; i > 0; i--)
         {
             Console.Write($"{_message}{i}");
@@ -58,8 +66,9 @@ public class Activity
             string blank = new string('\b', (_message.Length + 5));  // Overwrite line
             Console.Write(blank);
         }
-        Console.WriteLine($"Go:                                  ");  // last prompt
+        Console.WriteLine($"Go:                                  "); 
     }
 
+    
 
 }

@@ -13,15 +13,17 @@ public class ListingActivity : Activity
     "Who are some of your personal heroes?"
     };
     private List<string> _userList = new List<string>();
-    private string _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
-
-
-    // Constructors
-    // Methods
-    public ListingActivity(string activityName, int activityTime) : base(activityName, activityTime)
+    
+    public ListingActivity(string name, string description, int duration) : base(name, description, duration)
     {
 
     }
+
+    public void Run(int seconds)
+    {
+        
+    }
+
     public void GetActivityDescription()
     {
         Console.WriteLine(_description);
@@ -38,7 +40,7 @@ public class ListingActivity : Activity
         var question = GetRandomPrompt();
         Console.WriteLine("\nList as many responses as you can to the following prompt:");
         Console.WriteLine($"\n--- {question} ---");
-        CountDown(8);
+        ShowCountDown(8);
         Timer(seconds);
     }
     public void Timer(int seconds)

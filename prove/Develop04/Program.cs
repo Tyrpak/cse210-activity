@@ -19,35 +19,29 @@ class Program
                 case 1:
                     // Start Breathing Activity
                     Console.Clear();
-                    BreathingActivity breathing = new BreathingActivity("Breathing", 0);
-                    breathing.GetActivityName();
-                    breathing.GetActivityDescription();
-                    seconds = breathing.GetActivityTime();
-                    breathing.GetReady();
-                    breathing.Breathing(seconds);
-                    breathing.GetDone();
+                    BreathingActivity breathing = new BreathingActivity("Breathing", "This activity will help you relax by walking through your breathing in and out slowly. Clear your mind and focus on your breathing", 30);
+                    breathing.DisplayStartingMessage();
+                    int seconds = breathing.GetActivityTime();
+                    breathing.Run(seconds);
+                    breathing.DisplayEndingMessage();
                     break;
                 case 2:
                     //Start Reflecting Activity
                     Console.Clear();
-                    ReflectingActivity reflecting = new ReflectingActivity("Reflecting", 0);
-                    reflecting.GetActivityName();
-                    reflecting.GetActivityDescription();
+                    ReflectingActivity reflecting = new ReflectingActivity("Reflecting", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.", 30);
+                    reflecting.DisplayStartingMessage();
                     seconds = reflecting.GetActivityTime();
-                    reflecting.GetReady();
-                    reflecting.ShowPrompt(seconds);
-                    reflecting.GetDone();
+                    reflecting.Run(seconds);
+                    reflecting.DisplayEndingMessage();
                     break;
                 case 3:
                     //Start Listing Activity
                     Console.Clear();
-                    ListingActivity listing = new ListingActivity("Listing", 0);
-                    listing.GetActivityName();
-                    listing.GetActivityDescription();
+                    ListingActivity listing = new ListingActivity("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 30);
+                    listing.DisplayStartingMessage();
                     seconds = listing.GetActivityTime();
-                    listing.GetReady();
-                    listing.ReturnPrompt(seconds);
-                    listing.GetDone();
+                    listing.Run(seconds);
+                    listing.DisplayEndingMessage();
                     break;
                 case 4:
                     // Quit

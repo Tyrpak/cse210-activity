@@ -29,15 +29,17 @@ public class ReflectingActivity : Activity
 
     private string _prompt;
     private string _question;
-    private string _description = "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
-
-
-    // Constructors
-    // Methods
-    public ReflectingActivity(string activityName, int activityTime) : base(activityName, activityTime)
+   
+    public ReflectingActivity(string name, string description, int duration) : base(name, description, duration)
     {
 
     }
+
+    public void Run(int seconds)
+    {
+
+    }
+
     public void GetActivityDescription()
     {
         Console.WriteLine(_description);
@@ -70,10 +72,9 @@ public class ReflectingActivity : Activity
     }
     public void ShowQuestion(int seconds)
     {
-        _useQuestionsList.AddRange(_questionList); //creates a new list that can be destroyed each time.
-        Spinner spinner = new Spinner();
+        _useQuestionsList.AddRange(_questionList); 
         Console.WriteLine($"\nNow ponder on each of the following questions as they related to this experience.");
-        CountDown(8);
+        ShowCountDown(8);
         Console.Clear();
         Stopwatch timer = new Stopwatch();
         timer.Start();
@@ -83,9 +84,9 @@ public class ReflectingActivity : Activity
             {
                 var question = GetRandomQuestion();
                 Console.Write($"\n>> {question}  ");
-                _useQuestionsList.Remove(question);  //removes question from list so it can not be used again
+                _useQuestionsList.Remove(question); 
             }
-            spinner.ShowSpinner();
+            ShowSpinner();
         }
         timer.Stop();
     }
