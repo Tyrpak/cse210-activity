@@ -61,7 +61,7 @@ public class Activity
         Console.WriteLine();  
         for (int i = time; i > 0; i--)
         {
-            Console.Write($"{_message}{i}");
+            Console.Write($"{_message} {i}");
             Thread.Sleep(1000);
             string blank = new string('\b', (_message.Length + 5));  // Overwrite line
             Console.Write(blank);
