@@ -26,9 +26,6 @@ public class ReflectingActivity : Activity
     "What was your motivation?"
     };
     private List<string> _useQuestions = new List<string>();
-
-    private string _prompt;
-    private string _question;
    
     public ReflectingActivity(string name, string description, int duration) : base(name, description, duration)
     {
@@ -37,7 +34,7 @@ public class ReflectingActivity : Activity
 
     public void Run(int seconds)
     {
-
+        DisplayPrompt(seconds);
     }
 
     
@@ -53,9 +50,9 @@ public class ReflectingActivity : Activity
         int index = random.Next(_useQuestions.Count);
         return _useQuestions[index];
     }
-    public void ShowPrompt(int seconds)
+    public void DisplayPrompt(int seconds)
     {
-        Console.WriteLine();  //insert blank line to start
+        Console.WriteLine();
         var prompt = GetRandomPrompt();
         Console.WriteLine("\nConsider the following prompt:");
         Console.WriteLine($"\n--- {prompt} ---");
@@ -64,14 +61,15 @@ public class ReflectingActivity : Activity
         var input = Console.ReadKey();
         if (input.Key == ConsoleKey.Enter)
         {
-            ShowQuestion(seconds);
+            DisplayQuestion(seconds);
         }
     }
-    public void ShowQuestion(int seconds)
+    public void DisplayQuestion(int seconds)
     {
         _useQuestions.AddRange(_questions); 
         Console.WriteLine($"\nNow ponder on each of the following questions as they related to this experience.");
         ShowCountDown(5);
+
         Console.Clear();
         Stopwatch timer = new Stopwatch();
         timer.Start();
@@ -80,7 +78,7 @@ public class ReflectingActivity : Activity
             if (_useQuestions.Count != 0)
             {
                 var question = GetRandomQuestion();
-                Console.Write($"\n>> {question}  ");
+                Console.Write($"\n> {question}  ");
                 _useQuestions.Remove(question); 
             }
             ShowSpinner();
